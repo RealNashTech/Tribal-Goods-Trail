@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Data Security</title>
+<title>Data Security Practices</title>
 <style>
 body { background:#0D1440; color:white; padding:20px; font-family:Arial; line-height:1.6; }
 h1, h2 { color:#4ef2ff; }
@@ -12,13 +12,31 @@ h1, h2 { color:#4ef2ff; }
 
 <h1>Data Security Practices</h1>
 
-<p>Tribal Goods Trail uses encrypted infrastructure to protect your data.</p>
+<p>We safeguard data used by Tribal Goods Trail through the following controls:</p>
 
+<h2>Platform and Storage</h2>
 <ul>
-  <li>Firebase encrypts all data at rest and in transit</li>
-  <li>Only the verified administrator may access submissions</li>
-  <li>No third-party analytics receive personal information</li>
+  <li>Data is stored in Firebase with encryption at rest and in transit (TLS).</li>
+  <li>Back-end access is limited to the verified administrator via authenticated consoles.</li>
+  <li>Access is logged through provider tooling where available.</li>
 </ul>
+
+<h2>Data Minimization</h2>
+<ul>
+  <li>We collect only the submission details needed to list businesses and support verification.</li>
+  <li>We do not store precise location history; proximity is calculated on the device when possible.</li>
+  <li>We avoid collecting sensitive personal data that is not required for the service.</li>
+</ul>
+
+<h2>Sharing and Third Parties</h2>
+<ul>
+  <li>No sale of personal data.</li>
+  <li>Limited sharing with trusted service providers (e.g., Firebase) to operate the app.</li>
+  <li>No third-party marketing trackers are provided with personal information.</li>
+</ul>
+
+<h2>Reporting</h2>
+<p>If you suspect a security issue, please email <a href="mailto:a.gentry88@icloud.com" style="color:#79e8ff;">a.gentry88@icloud.com</a>.</p>
 
 </body>
 </html>
