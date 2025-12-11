@@ -1,0 +1,41 @@
+diff --git a/node_modules/react-native-google-mobile-ads/android/src/main/java/io/invertase/googlemobileads/ReactNativeGoogleMobileAdsModule.kt b/node_modules/react-native-google-mobile-ads/android/src/main/java/io/invertase/googlemobileads/ReactNativeGoogleMobileAdsModule.kt
+index e0b497a..f4458f2 100644
+--- a/node_modules/react-native-google-mobile-ads/android/src/main/java/io/invertase/googlemobileads/ReactNativeGoogleMobileAdsModule.kt
++++ b/node_modules/react-native-google-mobile-ads/android/src/main/java/io/invertase/googlemobileads/ReactNativeGoogleMobileAdsModule.kt
+@@ -105,13 +105,9 @@ class ReactNativeGoogleMobileAdsModule(
+ 
+   @ReactMethod
+   fun initialize(promise: Promise) {
++    val activity = reactApplicationContext.currentActivity
+     MobileAds.initialize(
+-      // in react-native, the Activity instance *may* go away, becoming null after initialize
+-      // it is not clear if that can happen here without an initialize necessarily following the Activity lifecycle
+-      // it is not clear if that will cause problems even if it happens, but users that have widely deployed this
+-      // with the use of currentActivity have not seen problems
+-      // reference if it needs attention: https://github.com/invertase/react-native-google-mobile-ads/pull/664
+-      currentActivity ?: reactApplicationContext,
++      activity ?: reactApplicationContext,
+       OnInitializationCompleteListener { initializationStatus ->
+         val result = Arguments.createArray()
+         for ((key, value) in initializationStatus.adapterStatusMap) {
+@@ -136,7 +132,7 @@ class ReactNativeGoogleMobileAdsModule(
+ 
+   @ReactMethod
+   fun openAdInspector(promise: Promise) {
+-    val activity = currentActivity
++    val activity = reactApplicationContext.currentActivity
+     if (activity == null) {
+       promise.reject("null-activity", "Ad Inspector attempted to open but the current Activity was null.")
+       return
+@@ -164,8 +160,9 @@ class ReactNativeGoogleMobileAdsModule(
+ 
+   @ReactMethod
+   fun openDebugMenu(adUnit: String) {
+-    currentActivity?.runOnUiThread {
+-      MobileAds.openDebugMenu(currentActivity!!, adUnit)
++    val activity = reactApplicationContext.currentActivity
++    activity?.runOnUiThread {
++      MobileAds.openDebugMenu(activity, adUnit)
+     }
+   }
+ 
