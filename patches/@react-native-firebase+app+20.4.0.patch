@@ -1,0 +1,84 @@
+diff --git a/node_modules/@react-native-firebase/app/plugin/build/ios/appDelegate.js b/node_modules/@react-native-firebase/app/plugin/build/ios/appDelegate.js
+index 8cf92f0..b4d3def 100644
+--- a/node_modules/@react-native-firebase/app/plugin/build/ios/appDelegate.js
++++ b/node_modules/@react-native-firebase/app/plugin/build/ios/appDelegate.js
+@@ -13,6 +13,20 @@ const methodInvocationLineMatcher = /(?:self\.moduleName\s*=\s*@\"([^"]*)\";)|(?
+ // https://regex101.com/r/nHrTa9/1/
+ // if the above regex fails, we can use this one as a fallback:
+ const fallbackInvocationLineMatcher = /-\s*\(BOOL\)\s*application:\s*\(UIApplication\s*\*\s*\)\s*\w+\s+didFinishLaunchingWithOptions:/g;
++const swiftDidFinishLaunchingMatcher = /func\s+application\([\s\S]*?didFinishLaunchingWithOptions[\s\S]*?\{\s*/;
++function modifySwiftAppDelegate(contents) {
++    if (!contents.includes('import Firebase')) {
++        contents = contents.replace(/import\s+ExpoModulesCore\s*\n/, (match) => `${match}import Firebase\n`);
++    }
++    if (contents.includes('FirebaseApp.configure()')) {
++        return contents;
++    }
++    if (!swiftDidFinishLaunchingMatcher.test(contents)) {
++        config_plugins_1.WarningAggregator.addWarningIOS('@react-native-firebase/app', 'Unable to determine correct Firebase insertion point in AppDelegate.swift. Skipping Firebase addition.');
++        return contents;
++    }
++    return contents.replace(swiftDidFinishLaunchingMatcher, (match) => `${match}\n    FirebaseApp.configure()\n`);
++}
+ function modifyObjcAppDelegate(contents) {
+     // Add import
+     if (!contents.includes('#import <Firebase/Firebase.h>')) {
+@@ -63,6 +77,10 @@ async function modifyAppDelegateAsync(appDelegateFileInfo) {
+         const newContents = modifyObjcAppDelegate(contents);
+         await fs_1.default.promises.writeFile(path, newContents);
+     }
++    else if (language === 'swift') {
++        const newContents = modifySwiftAppDelegate(contents);
++        await fs_1.default.promises.writeFile(path, newContents);
++    }
+     else {
+         // TODO: Support Swift
+         throw new Error(`Cannot add Firebase code to AppDelegate of language "${language}"`);
+diff --git a/node_modules/@react-native-firebase/app/plugin/src/ios/appDelegate.ts b/node_modules/@react-native-firebase/app/plugin/src/ios/appDelegate.ts
+index b4ecbdf..32dc8d8 100644
+--- a/node_modules/@react-native-firebase/app/plugin/src/ios/appDelegate.ts
++++ b/node_modules/@react-native-firebase/app/plugin/src/ios/appDelegate.ts
+@@ -12,6 +12,33 @@ const methodInvocationLineMatcher =
+ // if the above regex fails, we can use this one as a fallback:
+ const fallbackInvocationLineMatcher =
+   /-\s*\(BOOL\)\s*application:\s*\(UIApplication\s*\*\s*\)\s*\w+\s+didFinishLaunchingWithOptions:/g;
++const swiftDidFinishLaunchingMatcher =
++  /func\s+application\([\s\S]*?didFinishLaunchingWithOptions[\s\S]*?\{\s*/;
++
++function modifySwiftAppDelegate(contents: string): string {
++  if (!contents.includes('import Firebase')) {
++    contents = contents.replace(
++      /import\s+ExpoModulesCore\s*\n/,
++      match => `${match}import Firebase\n`,
++    );
++  }
++
++  if (contents.includes('FirebaseApp.configure()')) {
++    return contents;
++  }
++
++  if (!swiftDidFinishLaunchingMatcher.test(contents)) {
++    WarningAggregator.addWarningIOS(
++      '@react-native-firebase/app',
++      'Unable to determine correct Firebase insertion point in AppDelegate.swift. Skipping Firebase addition.',
++    );
++    return contents;
++  }
++
++  return contents.replace(swiftDidFinishLaunchingMatcher, match => {
++    return `${match}\n    FirebaseApp.configure()\n`;
++  });
++}
+ 
+ export function modifyObjcAppDelegate(contents: string): string {
+   // Add import
+@@ -74,6 +101,9 @@ export async function modifyAppDelegateAsync(appDelegateFileInfo: AppDelegatePro
+   if (['objc', 'objcpp'].includes(language)) {
+     const newContents = modifyObjcAppDelegate(contents);
+     await fs.promises.writeFile(path, newContents);
++  } else if (language === 'swift') {
++    const newContents = modifySwiftAppDelegate(contents);
++    await fs.promises.writeFile(path, newContents);
+   } else {
+     // TODO: Support Swift
+     throw new Error(`Cannot add Firebase code to AppDelegate of language "${language}"`);
