@@ -1,112 +1,132 @@
-# Tribal Goods Trail  
-A free, map-based directory highlighting Native-owned businesses, creators, and community sellers across Oregon, the Pacific Northwest, and eventually nationwide.
+Tribal Goods Trail
 
-Tribal Goods Trail helps users discover Native-owned shops, food, art, cultural goods, services, and community-based sellers—with no account required. Listings appear on an interactive real-time map after a manual review process designed to ensure clarity, cultural respect, and adherence to platform guidelines.
+Tribal Goods Trail is a free, map-based directory that helps people find Native-owned businesses, artists, creators, and community sellers across Oregon and the Pacific Northwest — with plans to expand nationwide.
 
----
+The goal is simple: make it easier for people to discover Native-owned shops, food, art, cultural goods, services, and community-based sellers. No account is required. Listings appear on an interactive real-time map after a quick manual review to ensure clarity, cultural respect, and alignment with platform guidelines.
 
-## Purpose  
-Native-owned businesses and cultural sellers deserve visibility—whether they operate licensed storefronts or sell directly within their communities. Tribal Goods Trail supports:
+Purpose
 
-- officially registered businesses and LLCs  
-- Tribal enterprises and Native-led nonprofits  
-- community sellers such as salmon makers, jerky sellers, beadworkers, firewood sellers, and huckleberry gatherers  
-- powwow vendors and seasonal sellers  
-- independent Native artists and creators  
+Native-owned businesses and cultural sellers deserve visibility—whether they run a storefront, travel as vendors, or sell directly within their communities. Tribal Goods Trail supports:
 
-Listings come from a combination of seller submissions and publicly available information gathered from Tribal enterprise websites, nonprofit registries, and other free business directories.
+officially registered businesses and LLCs
 
----
+Tribal enterprises and Native-led nonprofits
 
-## Features  
-- Free to use with no account required  
-- Interactive map updated after listing approvals  
-- Searchable directory with categories and filters  
-- Business profiles with distance, contact information, and details  
-- Manual review process for clarity and cultural respect  
-- Supports both official businesses and community-based sellers  
-- Designed for the Pacific Northwest, expanding nationwide  
-- In-app links to all policy and legal documents  
+community sellers such as salmon makers, beadworkers, jerky sellers, firewood sellers, and huckleberry gatherers
 
----
+powwow vendors and seasonal sellers
 
-## How Listings Work  
-Sellers self-identify as Native American, Alaska Native, or Indigenous and affirm that their representation is truthful. Tribal Goods Trail does not verify Tribal enrollment or citizenship.
+independent Native artists and creators
 
-Platform review ensures:
+Listings come from seller submissions and publicly available information, including Tribal enterprise websites, nonprofit registries, and other open business directories.
 
-- clarity of information  
-- alignment with guidelines  
-- cultural respect  
-- truthful representation as stated by the seller  
+Features
+
+Free to use — no account required
+
+Interactive map updated after listing approvals
+
+Searchable directory with filters and categories
+
+Business profiles with distance, contact info, and details
+
+Manual review process for clarity and cultural respect
+
+Supports both official businesses and community-based sellers
+
+Originally designed for the Pacific Northwest, expanding nationwide
+
+In-app links to all policy and legal documents
+
+How Listings Work
+
+Sellers self-identify as Native American, Alaska Native, or Indigenous and confirm the accuracy of their information. Tribal Goods Trail does not verify Tribal enrollment or citizenship.
+
+During review, the platform checks for:
+
+clarity of information
+
+alignment with guidelines
+
+cultural respect
+
+truthful self-identification as stated by the seller
 
 Tribal Goods Trail does not verify:
 
-- business licenses or registration  
-- food safety or health permits  
-- tax status or legal compliance  
-- authenticity of cultural items under the Indian Arts & Crafts Act (IACA)  
+business licenses or registration
 
-Sellers are responsible for compliance with all Tribal, State, and Federal laws. Users are responsible for interactions and transactions with listed businesses.
+food safety or health permits
 
----
+tax status or legal compliance
 
-## Legal Framework  
-The repository includes a complete legal documentation set, located in `/docs/legal/`, consisting of:
+authenticity of cultural goods under the Indian Arts & Crafts Act (IACA)
 
-- Privacy Policy  
-- Terms of Service  
-- Submission & Verification Policy  
-- Business Listing Disclaimer  
-- Data Security Practices  
-- Community Guidelines  
-- Content Moderation Policy  
+Sellers are responsible for their legal compliance. Users are responsible for their interactions and transactions with listed businesses.
+
+Legal Framework
+
+All legal documents can be found in /docs/legal/, including:
+
+Privacy Policy
+
+Terms of Service
+
+Submission & Verification Policy
+
+Business Listing Disclaimer
+
+Data Security Practices
+
+Community Guidelines
+
+Content Moderation Policy
 
 Key principles:
 
-- Listings are not endorsements by Tribal Goods Trail or any Tribal Nation  
-- Sellers are independent and not employees or agents of Tribal Goods Trail  
-- Tribal Goods Trail is not a marketplace and does not process transactions  
-- Sellers self-identify as Native-owned; Tribal enrollment is not verified  
-- Cultural goods are the seller’s responsibility under IACA  
-- Some listings originate from publicly available information  
+Listings are not endorsements
 
-This legal structure ensures transparency, safety, and respect for Native communities and users.
+Sellers are independent and not representatives of Tribal Goods Trail
 
----
+Tribal Goods Trail is not a marketplace and does not process transactions
 
-## Tech Stack  
-- React Native / Expo  
-- Firebase Firestore  
-- Firebase Storage  
-- Expo Router  
-- GitHub Pages (for policy hosting)  
+Sellers self-identify as Native-owned; Tribal enrollment is not verified
 
----
+Cultural goods fall under the seller’s responsibility and may be subject to IACA
 
-## Operator  
-Tribal Goods Trail is operated by:  
-**Real Nash Tech & Consulting (Sole Proprietorship)**  
-Woodburn, Oregon  
-Contact: **a.gentry88@icloud.com**
+Some listings originate from publicly accessible sources
 
----
+This legal structure helps ensure safety, transparency, and respect for Native communities and users.
 
-## Community Commitment  
-Although the creator is not a Tribal member, the project is rooted in long-standing ties to the Confederated Tribes of Warm Springs and a commitment to supporting Native-owned businesses with accuracy, respect, and visibility.
+Tech Stack
 
-The platform grows as the community grows. Each listing contributes to strengthening Native economies, families, and cultural resilience.
+React Native / Expo
 
----
+Firebase Firestore (real-time data)
 
-## Contributions  
-Suggestions, corrections, and pull requests are welcome. Community feedback helps ensure accuracy and cultural respect across all listings.
+Firebase Storage (images)
 
----
+Expo Router
 
-## License  
-This repository is licensed under the MIT License unless otherwise noted.
+GitHub Pages (policy hosting)
 
----
+Operator
 
-Thank you for supporting Native-owned businesses and creators.
+Tribal Goods Trail is operated by:
+Real Nash Tech & Consulting (Sole Proprietorship)
+Woodburn, Oregon
+Contact: a.gentry88@icloud.com
+
+Community Commitment
+
+Although the creator is not a Tribal member, the project is built on long-standing ties with the Confederated Tribes of Warm Springs and a commitment to supporting Native-owned businesses with accuracy, respect, and visibility.
+
+The directory grows with community contributions. Every new listing helps strengthen Native economies, families, and cultural resilience.
+
+Contributions
+
+Suggestions, corrections, and pull requests are welcome. Community input helps improve accuracy and ensure cultural respect across the platform.
+
+License
+
+This repository is licensed under the MIT License, unless otherwise noted.
